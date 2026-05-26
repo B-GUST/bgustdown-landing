@@ -39,14 +39,24 @@ const content = {
   }
 };
 
-const Card = ({ title, children, orangeLine = false }) => (
+interface CardProps {
+  title: string;
+  children: React.ReactNode;
+  orangeLine?: boolean;
+}
+
+const Card = ({ title, children, orangeLine = false }: CardProps) => (
   <div className={`relative bg-[#0d0d0d] border border-white/5 p-8 rounded-2xl backdrop-blur-xl shadow-2xl transition-all hover:border-orange-500/30 group ${orangeLine ? 'border-t-orange-500 border-t-2' : ''}`}>
     <h3 className="text-xl font-bold text-white mb-4 group-hover:text-orange-500 transition-colors uppercase tracking-tight">{title}</h3>
     <div className="text-gray-400 leading-relaxed font-light">{children}</div>
   </div>
 );
 
-const CodeBlock = ({ children }) => (
+interface CodeBlockProps {
+  children: React.ReactNode;
+}
+
+const CodeBlock = ({ children }: CodeBlockProps) => (
   <div className="bg-[#050505] border border-white/10 rounded-xl p-6 font-mono text-sm text-gray-300 overflow-x-auto my-6 shadow-inner relative group">
     <div className="absolute top-2 right-4 text-[10px] text-gray-600 uppercase font-bold tracking-widest group-hover:text-orange-500 transition-colors">Terminal / CLI</div>
     {children}
@@ -54,7 +64,7 @@ const CodeBlock = ({ children }) => (
 );
 
 export default function Home() {
-  const [lang, setLang] = useState('es');
+  const [lang, setLang] = useState<'es' | 'en'>('es');
   const t = content[lang];
 
   return (
