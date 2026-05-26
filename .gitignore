@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# GCC (Git Context Controller)
+.GCC/
+
+# Agent conversation logs and documentation
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+MEMORY.md
+
