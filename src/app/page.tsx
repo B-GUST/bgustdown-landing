@@ -86,7 +86,7 @@ export default function Home() {
             <a href="#docs" className="hover:text-orange-500 transition-colors uppercase tracking-[0.2em] text-[10px] pt-1">{t.docs}</a>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-[10px] font-bold text-orange-500 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">v0.1.2 Stable</span>
+            <span className="text-[10px] font-bold text-orange-500 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">v0.1.3 Stable</span>
             <a href="https://github.com/B-GUST/bgustdown" className="px-6 py-2 bg-white text-black text-[10px] font-black rounded-full hover:bg-orange-500 hover:text-white transition-all transform hover:scale-105 uppercase tracking-widest">{t.git}</a>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function Home() {
         
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center px-4">
           <a href="#install" className="w-full md:w-auto px-12 py-5 bg-orange-600 text-white font-black rounded-2xl hover:bg-orange-500 shadow-[0_0_40px_rgba(255,85,0,0.4)] transition-all transform hover:-translate-y-1 uppercase tracking-widest text-sm">
-            {t.cta} (v0.1.2)
+            {t.cta} (v0.1.3)
           </a>
           <a href="https://doi.org/10.5281/zenodo.20090926" className="w-full md:w-auto px-8 py-5 bg-[#111] border border-white/10 rounded-2xl font-mono text-sm text-gray-400 flex items-center justify-center gap-4 hover:border-orange-500/50 transition-colors">
             <span className="text-orange-500">DOI:</span> 10.5281/zenodo.20090926
@@ -186,7 +186,7 @@ export default function Home() {
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-12 md:mb-0 text-center md:text-left">
             <div className="text-3xl font-black mb-4 uppercase tracking-tighter italic">BGUST<span className="text-orange-500">DOWN</span></div>
-            <p className="text-[10px] text-gray-600 uppercase tracking-[0.3em] font-bold">© 2026 B-GUST — v0.1.2 (Stable)</p>
+            <p className="text-[10px] text-gray-600 uppercase tracking-[0.3em] font-bold">© 2026 B-GUST — v0.1.3 (Stable)</p>
           </div>
           <div className="flex flex-wrap justify-center gap-10 text-[10px] font-black text-gray-500 uppercase tracking-[0.2em]">
             <a href="https://doi.org/10.5281/zenodo.20090926" className="hover:text-orange-500 transition-all">{t.zenodo}</a>
