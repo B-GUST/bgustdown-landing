@@ -11,7 +11,6 @@ const content = {
     installTitle: "Vías de Instalación",
     visionTitle: "Nuestra Visión",
     visionText: "bgustdown nace para eliminar los cuellos de botella en los pipelines de IA. Mientras otros ven documentos, nosotros vemos inteligencia semántica pura. Nuestra misión es proporcionar una capa de datos industrial, ultra-rápida y precisa que sirva como el primer eslabón en el entrenamiento de modelos de lenguaje de próxima generación.",
-    skillManualTitle: "Manual de la Skill / CLI",
     langBtn: "English Version",
     docs: "Documentación",
     cap: "Capacidades",
@@ -23,7 +22,12 @@ const content = {
     demoSubtitle: "Mucho más que un convertidor de texto. Optimización de tokens, estandarización de esquemas y preprocesamiento OCR en tiempo récord.",
     tabTerminal: "Simulador ETL (Rust Core)",
     tabTokens: "Compresión de Tokens",
-    tabBinarization: "Binarización OCR (Fase 4)",
+    tabBinarization: "Binarización OCR (bgustreadimg)",
+    mcpCardTitle: "MCP Server",
+    mcpCardDesc: "Para agentes de IA (Claude, opencode).",
+    mcpCardCmd: "npx bgustdown-mcp",
+    ocrNote: "OCR escaneado: vía el servicio independiente bgustreadimg.",
+    skillManualTitle: "Manual de Skill / MCP / CLI",
   },
   en: {
     heroTitle: "ENGINEERED FOR",
@@ -33,7 +37,6 @@ const content = {
     installTitle: "Installation Methods",
     visionTitle: "Our Vision",
     visionText: "bgustdown was built to eliminate bottlenecks in AI pipelines. Where others see documents, we see raw semantic intelligence. Our mission is to provide an industrial-grade, ultra-fast, and precise data layer that serves as the foundation for training next-generation language models.",
-    skillManualTitle: "Skill / CLI Manual",
     langBtn: "Versión Español",
     docs: "Documentation",
     cap: "Capabilities",
@@ -45,7 +48,12 @@ const content = {
     demoSubtitle: "Much more than a text converter. Token optimization, schema standardization, and OCR preprocessing in record time.",
     tabTerminal: "ETL Simulator (Rust Core)",
     tabTokens: "Token Compression",
-    tabBinarization: "OCR Binarization (Phase 4)",
+    tabBinarization: "OCR Binarization (bgustreadimg)",
+    mcpCardTitle: "MCP Server",
+    mcpCardDesc: "For AI agents (Claude, opencode).",
+    mcpCardCmd: "npx bgustdown-mcp",
+    ocrNote: "Scanned OCR: via the independent bgustreadimg service.",
+    skillManualTitle: "Skill / MCP / CLI Manual",
   }
 };
 
@@ -102,7 +110,7 @@ export default function Home() {
             <a href="#docs" className="hover:text-orange-500 transition-colors uppercase tracking-[0.2em] text-[10px] pt-1">{t.docs}</a>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-[10px] font-bold text-orange-500 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">v0.1.4 Stable</span>
+            <span className="text-[10px] font-bold text-orange-500 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">v0.2.1 Stable</span>
             <a href="https://github.com/B-GUST/bgustdown" className="px-6 py-2 bg-white text-black text-[10px] font-black rounded-full hover:bg-orange-500 hover:text-white transition-all transform hover:scale-105 uppercase tracking-widest">{t.git}</a>
           </div>
         </div>
@@ -122,7 +130,7 @@ export default function Home() {
         
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center px-4">
           <a href="#install" className="w-full md:w-auto px-12 py-5 bg-orange-600 text-white font-black rounded-2xl hover:bg-orange-500 shadow-[0_0_40px_rgba(255,85,0,0.4)] transition-all transform hover:-translate-y-1 uppercase tracking-widest text-sm">
-            {t.cta} (v0.1.4)
+            {t.cta} (v0.2.1)
           </a>
           <a href="https://doi.org/10.5281/zenodo.20090926" className="w-full md:w-auto px-8 py-5 bg-[#111] border border-white/10 rounded-2xl font-mono text-sm text-gray-400 flex items-center justify-center gap-4 hover:border-orange-500/50 transition-colors">
             <span className="text-orange-500">DOI:</span> 10.5281/zenodo.20090926
@@ -137,7 +145,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-12 items-start">
              <div className="md:col-span-2">
                 <p className="text-2xl text-gray-300 font-light leading-relaxed mb-8 italic">
-                  "{t.visionText}"
+                  &ldquo;{t.visionText}&rdquo;
                 </p>
              </div>
              <div className="space-y-6">
@@ -260,7 +268,7 @@ export default function Home() {
             {demoTab === 'binarization' && (
               <div className="flex flex-col justify-between h-full space-y-6">
                 <div>
-                  <div className="text-orange-500 font-bold uppercase tracking-widest text-[10px] mb-2">Binariazación de Imagen para OCR (Fase 4)</div>
+                  <div className="text-orange-500 font-bold uppercase tracking-widest text-[10px] mb-2">{lang === 'es' ? "Binariazación de Imagen para OCR (bgustreadimg)" : "Image Binarization for OCR (bgustreadimg)"}</div>
                   <p className="text-xs text-gray-400">
                     {lang === 'es' 
                       ? "Mueve el control deslizante para observar cómo el preprocesador limpia sombras y arrugas de una captura de cámara para hacer legible el texto para el OCR." 
@@ -328,9 +336,10 @@ export default function Home() {
               <p className="text-xs mb-4 text-gray-500">For native high-speed ETL.</p>
               <CodeBlock>cargo add bgustdown</CodeBlock>
             </Card>
-            <Card title="AI Skill">
-              <p className="text-xs mb-4 text-gray-500">For LLM Agents & Plugins.</p>
-              <CodeBlock>npx skill add https://github.com/B-GUST/bgustdown</CodeBlock>
+            <Card title={t.mcpCardTitle}>
+              <p className="text-xs mb-4 text-gray-500">{t.mcpCardDesc}</p>
+              <CodeBlock>{t.mcpCardCmd}</CodeBlock>
+              <p className="text-[10px] text-gray-600 mt-3">{t.ocrNote}</p>
             </Card>
             <Card title="Git Source">
               <p className="text-xs mb-4 text-gray-500">For core contributors.</p>
@@ -360,6 +369,26 @@ export default function Home() {
               </div>
               <CodeBlock>npx bgustdown prepare ./data.docx</CodeBlock>
             </div>
+
+            <div>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-8 h-[2px] bg-orange-500"></div>
+                <h3 className="text-xs font-black text-orange-500 tracking-[0.4em] uppercase">{lang === 'es' ? "3. Integración MCP" : "3. MCP Integration"}</h3>
+              </div>
+              <CodeBlock terminalLabel="Config MCP / Claude, opencode">{`{
+  "mcpServers": {
+    "bgustdown": {
+      "command": "npx",
+      "args": ["bgustdown-mcp"]
+    }
+  }
+}`}</CodeBlock>
+              <p className="text-[10px] text-gray-500 mt-2">
+                {lang === 'es'
+                  ? `Tools: convert_file, prepare_nlp_data y preprocess_image (OCR vía bgustreadimg).`
+                  : `Tools: convert_file, prepare_nlp_data and preprocess_image (OCR via bgustreadimg).`}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -369,7 +398,8 @@ export default function Home() {
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-12 md:mb-0 text-center md:text-left">
             <div className="text-3xl font-black mb-4 uppercase tracking-tighter italic">BGUST<span className="text-orange-500">DOWN</span></div>
-            <p className="text-[10px] text-gray-600 uppercase tracking-[0.3em] font-bold">© 2026 B-GUST — v0.1.4 (Stable)</p>
+            <p className="text-[10px] text-gray-600 uppercase tracking-[0.3em] font-bold">© 2026 B-GUST — v0.2.1 (Stable)</p>
+            <p className="text-[10px] text-gray-700 mt-2">Parte del ecosistema BGUST / bgustforge · OCR: bgustreadimg</p>
           </div>
           <div className="flex flex-wrap justify-center gap-10 text-[10px] font-black text-gray-500 uppercase tracking-[0.2em]">
             <a href="https://doi.org/10.5281/zenodo.20090926" className="hover:text-orange-500 transition-all">{t.zenodo}</a>
